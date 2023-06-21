@@ -27,8 +27,8 @@ docker build -t stenv -f Dockerfile .
 
 ##### 3. Running the Container
 Run the docker container with:
-`docker run --rm -it -v <VOLUME>:/root/ -p 8888:8888 stenv`
-This mounts a local `<VOLUME>` to the root directory of the docker container making data or notebooks accessible from within. 
+`docker run --rm -it -v <VOLUME>:/root/<NAME> -p 8888:8888 stenv`
+This mounts a local `<VOLUME>` to the `/root/<NAME>` directory of the docker container making data or notebooks accessible from within. 
 Port `8888` is exposed to allow for Jupyter connections
 
 When the container is activated, the `stenv` conda environment is already active, as seen in the prompt

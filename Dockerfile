@@ -20,6 +20,6 @@ RUN wget ${STENV_URL} \
     && conda env create --file stenv*.yaml --name stenv \
     && rm stenv*.yaml
 
-RUN echo 'conda activate stenv' >> /etc/profile
+RUN echo 'conda activate stenv' >> ~/.bashrc
 
 ENTRYPOINT /bin/bash -l
