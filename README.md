@@ -32,6 +32,7 @@ This mounts a local `<VOLUME>` to the root directory of the docker container mak
 Port `8888` is exposed to allow for Jupyter connections
 
 When the container is activated, the `stenv` conda environment is already active, as seen in the prompt
+
 `(stenv) root@22c6856788e2:~#`
 
 You can either work directly from the terminal, or spin up a Jupyter Lab session with:
