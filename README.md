@@ -37,6 +37,6 @@ When the container is activated, the `stenv` conda environment is already active
 
 You can either work directly from the terminal, or spin up a Jupyter Lab session with:
 
-`jupyter notebook --allow-root --ip='*' --port=8888`
+`jupyter-lab --allow-root --ip='*' --port=8888`
 
 which should be accessible from a browser at [localhost:8888/lab](http://localhost:8888/lab)
