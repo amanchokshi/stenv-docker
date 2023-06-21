@@ -9,12 +9,10 @@ I'm often hesitant to install big software packeges on my laptop, especially whe
 using it. Thus was this repo born!
 
 ### Features
-------------
 - Fully functional STScI `stenv` in a docker container
 - Jupyter Lab access to `stenv` via the docker container
 
 ### Usage
----------
 One can either pull the `stenv` docker container form: [hub.docker.com](https://hub.docker.com/), 
 or build the image locally.
 
@@ -23,8 +21,21 @@ or build the image locally.
 
 ##### 2. Build Image
 ```
-git clone 
+git clone git@github.com:amanchokshi/stenv-docker.git
+docker build -t stenv -f Dockerfile .
 ```
 
-docker run --rm -it -v ~/Repos/trainwreck:/root/ -p 8888:8888 stenv
-jupyter notebook --allow-root --ip='*' --port=8888
+##### 3. Running the Container
+Run the docker container with:
+`docker run --rm -it -v <VOLUME>:/root/ -p 8888:8888 stenv`
+This mounts a local `<VOLUME>` to the root directory of the docker container making data or notebooks accessible from within. 
+Port `8888` is exposed to allow for Jupyter connections
+
+When the container is activated, the `stenv` conda environment is already active, as seen in the prompt
+`(stenv) root@22c6856788e2:~#`
+
+You can either work directly from the terminal, or spin up a Jupyter Lab session with:
+
+`jupyter notebook --allow-root --ip='*' --port=8888`
+
+which should be accessible from a browser at [localhost:8888/lab](http://localhost:8888/lab)
