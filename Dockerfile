@@ -12,13 +12,13 @@ RUN apt-get -y update \
 
 WORKDIR /root
 
-ARG STENV_URL=https://github.com/spacetelescope/stenv/releases/download/2023.06.08/stenv-Linux-X64-py3.11-2023.06.08.yaml
+ARG STENV_URL=https://raw.githubusercontent.com/spacetelescope/stenv/main/environment.yaml
 
 RUN wget ${STENV_URL} \
-    && echo '      - jupyterlab==4.0.2' >> stenv*.yaml \
-    && echo '      - ipympl==0.9.3' >> stenv*.yaml \
-    && conda env create --file stenv*.yaml --name stenv \
-    && rm stenv*.yaml
+    && echo '      - jupyterlab' >> environment.yaml \
+    && echo '      - ipympl' >> environment.yaml \
+    && conda env create --file environment.yaml --name stenv \
+    && rm environment.yaml
 
 RUN echo 'conda activate stenv' >> ~/.bashrc
 
