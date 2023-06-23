@@ -1,4 +1,4 @@
-FROM continuumio/miniconda3:latest
+FROM mambaorg/micromamba:latest
 
 MAINTAINER Aman Chokshi <achokshi@student.unimelb.edu.au>
 
@@ -14,12 +14,10 @@ WORKDIR /root
 
 ARG STENV_URL=https://github.com/spacetelescope/stenv/releases/download/2023.06.08/stenv-Linux-X64-py3.11-2023.06.08.yaml
 
-RUN wget ${STENV_URL} \
-    && echo '      - jupyterlab==4.0.2' >> stenv*.yaml \
-    && echo '      - ipympl==0.9.3' >> stenv*.yaml \
-    && conda env create --file stenv*.yaml --name stenv \
-    && rm stenv*.yaml
+RUN wget ${STENV_URL} &&
+    micromamba create -y --name stenv --file stenv-*.yaml jupyterlab==4.0.2 ipympl==0.9.3 &&
+    rm stenv-*.yaml
 
-RUN echo 'conda activate stenv' >> ~/.bashrc
+RUN echo 'micromamba activate stenv' >> ~/.bashrc
 
 ENTRYPOINT /bin/bash -l
