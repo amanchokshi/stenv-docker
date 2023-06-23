@@ -17,8 +17,8 @@ WORKDIR /root
 ARG STENV_URL=https://raw.githubusercontent.com/spacetelescope/stenv/main/environment.yaml
 
 RUN wget ${STENV_URL} \
-    && micromamba create -y --name stenv --file stenv-*.yaml jupyterlab==4.0.2 ipympl==0.9.3 \
-    && rm stenv-*.yaml
+    && micromamba create -y --name stenv --file environment.yaml jupyterlab==4.0.2 ipympl==0.9.3 \
+    && rm environment.yaml
 
 RUN echo 'micromamba activate stenv' >> ~/.bashrc
 
