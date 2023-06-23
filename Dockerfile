@@ -14,7 +14,7 @@ RUN apt-get -y update \
 
 WORKDIR /root
 
-ARG STENV_URL=https://github.com/spacetelescope/stenv/releases/download/2023.06.08/stenv-Linux-X64-py3.11-2023.06.08.yaml
+ARG STENV_URL=https://raw.githubusercontent.com/spacetelescope/stenv/main/environment.yaml
 
 RUN wget ${STENV_URL} \
     && micromamba create -y --name stenv --file stenv-*.yaml jupyterlab==4.0.2 ipympl==0.9.3 \
